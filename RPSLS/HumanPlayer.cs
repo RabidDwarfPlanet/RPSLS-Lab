@@ -16,6 +16,7 @@ namespace RPSLS
 
         public override void ChooseGesture()
         {
+            this.chosenGesture = null;
             Console.Clear();
             Console.WriteLine($"{this.name} what gesture would you like to play?");
             foreach(string gesture in gestures)
@@ -31,11 +32,11 @@ namespace RPSLS
                     this.chosenGesture = gesture;
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("This is not a valid gesture, please try again");
-                    goto retry;
-                }
+            }
+            if (this.chosenGesture == null)
+            {
+                Console.WriteLine("This is not a valid gesture, please try again");
+                goto retry;
             }
         }
     }

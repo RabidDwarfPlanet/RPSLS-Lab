@@ -180,6 +180,9 @@ namespace RPSLS
         {
             WelcomeMessage();
             CreatePlayerObjects(ChooseNumberOfHumanPlayers());
+        replay:
+            playerOne.score = 0;
+            playerTwo.score = 0;
             while (playerOne.score < 2 && playerTwo.score < 2)
             {
                 playerOne.ChooseGesture();
@@ -188,8 +191,31 @@ namespace RPSLS
 
             }
             DisplayGameWinner();
+            if (ReplayGame() == "yes") { goto replay; }
+            else { Environment.Exit(0); }
 
 
+        }
+
+        public string ReplayGame()
+        {
+            Console.WriteLine("\nWould you replay this game? Type YES to restart it or type NO to close the game");
+            retry:
+            string replayAnswer = Console.ReadLine();
+            if (replayAnswer.ToLower() == "yes" || replayAnswer.ToLower() == "y")
+            {
+                return "yes";
+            }
+            else if (replayAnswer.ToLower() == "no" || replayAnswer.ToLower() == "n")
+            {
+                return "no";
+            }
+            else
+            {
+                Console.WriteLine("Not a valid answer, please try again");
+                goto retry;
+            }
+            
         }
     }
 }
