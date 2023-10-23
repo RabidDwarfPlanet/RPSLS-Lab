@@ -14,14 +14,10 @@ namespace RPSLS
 
         }
 
-        public void NamePlayer() 
-        {
-            this.name = Console.ReadLine();
-        }
-
         public override void ChooseGesture()
         {
-            Console.WriteLine("What gesture would you like to play?");
+            Console.Clear();
+            Console.WriteLine($"{this.name} what gesture would you like to play?");
             foreach(string gesture in gestures)
             {
                 Console.WriteLine(gesture);
@@ -30,9 +26,10 @@ namespace RPSLS
             string chosenGesture = Console.ReadLine();
             foreach(string gesture in gestures)
             {
-                if(gesture.ToLower() == chosenGesture.ToLower())
+                if(chosenGesture.ToLower() == gesture.ToLower())
                 {
-                    chosenGesture = gesture;
+                    this.chosenGesture = gesture;
+                    break;
                 }
                 else
                 {
