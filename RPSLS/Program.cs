@@ -1,10 +1,11 @@
-﻿namespace RPSLS_Lab
+﻿namespace RPSLS
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Game game = new Game();
+            game.RunGame();
         }
     }
 }
