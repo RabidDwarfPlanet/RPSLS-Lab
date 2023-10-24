@@ -25,7 +25,7 @@ namespace RPSLS
             }
             else
             {
-                Console.WriteLine($"You have {score} points");
+                Console.WriteLine($"You have {score} points\n");
             }
             foreach(string gesture in gestures)
             {

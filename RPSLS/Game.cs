@@ -57,9 +57,14 @@ namespace RPSLS
             {
                 return numberOfHumanPlayers;
             }
-            else
+            else if(num == true)
             {
                 Console.WriteLine("That is not a valid number of players, please try again");
+                goto retry;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a number");
                 goto retry;
             }
             
