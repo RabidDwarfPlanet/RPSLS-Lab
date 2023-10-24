@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,21 +11,19 @@ namespace RPSLS
     {
         //Member Variabes (HAS A)
         public string name;
-        public List<string> gestures;
-        public string chosenGesture;
+        public Gestures chosenGesture;
         public int score;
 
         //Constructor
         public Player(string name)
         {
             this.name = name;
-            gestures = new List<string> {"rock", "paper", "scissors", "lizard", "Spock" };
-            chosenGesture = "";
+            chosenGesture = null;
             score = 0;
         }
 
         //Member Methods (CAN DO)
         //This abstract method must be overridden by the child Player classes
-        public abstract void ChooseGesture();
+        public abstract void ChooseGesture(List<Gestures> name);
     }
 }

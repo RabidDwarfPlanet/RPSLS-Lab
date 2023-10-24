@@ -14,7 +14,7 @@ namespace RPSLS
 
         }
 
-        public override void ChooseGesture()
+        public override void ChooseGesture(List<Gestures> gesture)
         {
             this.chosenGesture = null;
             Console.Clear();
@@ -27,17 +27,17 @@ namespace RPSLS
             {
                 Console.WriteLine($"You have {score} points\n");
             }
-            foreach(string gesture in gestures)
+            for(int i = 0; i < 5; i++)
             {
-                Console.WriteLine(gesture);
+                Console.WriteLine(gesture[i].gestureName);
             }
             retry:
             string chosenGesture = Console.ReadLine();
-            foreach(string gesture in gestures)
+            for(int i = 0; i < 5; i++)
             {
-                if(chosenGesture.ToLower() == gesture.ToLower())
+                if(chosenGesture.ToLower() == gesture[i].gestureName.ToLower())
                 {
-                    this.chosenGesture = gesture;
+                    this.chosenGesture = gesture[i];
                     break;
                 }
             }
