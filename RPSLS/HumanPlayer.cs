@@ -19,6 +19,14 @@ namespace RPSLS
             this.chosenGesture = null;
             Console.Clear();
             Console.WriteLine($"{this.name} what gesture would you like to play?");
+            if (score == 1)
+            {
+                Console.WriteLine($"You have {score} point");
+            }
+            else
+            {
+                Console.WriteLine($"You have {score} points");
+            }
             foreach(string gesture in gestures)
             {
                 Console.WriteLine(gesture);
@@ -36,7 +44,7 @@ namespace RPSLS
             if (this.chosenGesture == null)
             {
                 Console.WriteLine("This is not a valid gesture, please try again");
-                goto retry;
+                    goto retry;
             }
         }
     }

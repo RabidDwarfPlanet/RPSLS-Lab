@@ -12,6 +12,8 @@ namespace RPSLS
         //Member Variabes (HAS A)
         public Player playerOne;
         public Player playerTwo;
+        int scoreCap;
+
 
         //Constructor
         public Game()
@@ -25,7 +27,24 @@ namespace RPSLS
             Console.WriteLine("Welcome to RPSLS! Here are the rules:");
             Console.WriteLine("This game is a more complex version of Rock Paper Scissors with some new options\nIn this version of the game");
             Console.WriteLine("Rock breaks Scissors\nScissors slices Paper \nPaper smothers Rock\nRock kills Lizard\nLizard kills Spock\nSpock breaks Scissors\nScissors kills Lizard\nLizard ruins Paper\nPaper reprimand Spock\nSpock disintegrate Rock");
-            Console.WriteLine("This is a best of 3 game, so the first player to win twice wins the game");
+            
+        }
+
+        public void ScoreCap()
+        {
+            Console.WriteLine("\nHow many points would you like this game to go to");
+        retry:
+            string input = Console.ReadLine();
+            bool num = int.TryParse(input, out int scoreCap);
+            if (num == true)
+            {
+                this.scoreCap = scoreCap;
+            }
+            else
+            {
+                Console.WriteLine("That is not a number, please try again");
+                goto retry;
+            }
         }
 
         public int ChooseNumberOfHumanPlayers()
@@ -166,11 +185,11 @@ namespace RPSLS
         public void DisplayGameWinner()
         {
             Console.Clear();
-            if (playerOne.score == 2)
+            if (playerOne.score == scoreCap)
             {
                 Console.WriteLine($"{playerOne.name} has won!");
             }
-            else if (playerTwo.score == 2)
+            else if (playerTwo.score == scoreCap)
             {
                 Console.WriteLine($"{playerTwo.name} has won!");
             }
@@ -179,11 +198,12 @@ namespace RPSLS
         public void RunGame()
         {
             WelcomeMessage();
+            ScoreCap();
             CreatePlayerObjects(ChooseNumberOfHumanPlayers());
         replay:
             playerOne.score = 0;
             playerTwo.score = 0;
-            while (playerOne.score < 2 && playerTwo.score < 2)
+            while (playerOne.score < scoreCap && playerTwo.score < scoreCap)
             {
                 playerOne.ChooseGesture();
                 playerTwo.ChooseGesture();
